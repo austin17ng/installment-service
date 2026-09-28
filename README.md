@@ -234,6 +234,9 @@ Mobile App
     │
     │ 2. POST /installments
     │    (confirm selected plan)
+    │
+    │ 3. GET /accounts/{accountId}/installments
+    │    (list all plans for an account)
     ▼
 installment-service
     │
@@ -253,6 +256,18 @@ GET /installments/{id}
 ```
 
 Returns: plan details (term, status, start date, amounts, rates, fees) and the list of schedules (due date, status, principal, interest).
+
+---
+
+### Get Installments by Account
+
+Used to list all installment plans for a given account.
+
+```http
+GET /accounts/{accountId}/installments
+```
+
+Returns: a list of installment plans with their details (term, status, start date, amounts, rates, fees) and schedules.
 
 ---
 
