@@ -7,8 +7,21 @@ Prerequisites: Java 17, PostgreSQL
 ```bash
 ./gradlew build          # Build the project
 ./gradlew test           # Run all tests
-./gradlew bootRun        # Run the application
 ```
+
+### Run locally (dev)
+
+```bash
+./gradlew bootRun --args='--spring.profiles.active=dev'
+```
+
+### Run in production
+
+```bash
+./gradlew bootRun --args='--spring.profiles.active=prod'
+```
+
+Requires environment variables: `DB_URL`, `DB_USERNAME`, `DB_PASSWORD`
 
 ---
 
