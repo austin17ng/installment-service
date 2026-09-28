@@ -5,7 +5,6 @@ import me.austin.ng.installmentservice.domain.model.InstallmentOption;
 import java.math.BigDecimal;
 
 public record InstallmentPlanResponse(
-        String term,
         int termMonths,
         BigDecimal monthlyPrincipal,
         BigDecimal monthlyInterestRate,
@@ -14,7 +13,6 @@ public record InstallmentPlanResponse(
 ) {
     public static InstallmentPlanResponse from(InstallmentOption option) {
         return new InstallmentPlanResponse(
-                option.getTerm().name(),
                 option.getTerm().getMonths(),
                 option.getMonthlyPrincipal(),
                 option.getMonthlyInterestRate(),
