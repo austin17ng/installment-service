@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/installment_db
+    username: austin17ng
+    password: austin123
+    driver-class-name: org.postgresql.Driver
