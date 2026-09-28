@@ -1,4 +1,4 @@
-package me.austin.ng.installmentservice.domain.calculator;
+package me.austin.ng.installmentservice.domain.common;
 
 import me.austin.ng.installmentservice.domain.model.InstallmentTerm;
 

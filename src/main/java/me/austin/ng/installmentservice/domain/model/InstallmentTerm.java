@@ -17,4 +17,13 @@ public enum InstallmentTerm {
     public int getMonths() {
         return months;
     }
+
+    public static InstallmentTerm fromMonths(int months) {
+        for (InstallmentTerm term : values()) {
+            if (term.months == months) {
+                return term;
+            }
+        }
+        throw new IllegalArgumentException("Unsupported term: " + months + " months");
+    }
 }

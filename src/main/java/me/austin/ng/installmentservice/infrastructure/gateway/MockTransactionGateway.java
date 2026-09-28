@@ -12,6 +12,6 @@ public class MockTransactionGateway implements TransactionGateway {
 
     @Override
     public Optional<Transaction> getTransaction(String transactionId) {
-        return Optional.of(new Transaction(transactionId, new BigDecimal("12000000")));
+        return Optional.of(new Transaction(transactionId, "acc-001", new BigDecimal("12000000")));
     }
 }
