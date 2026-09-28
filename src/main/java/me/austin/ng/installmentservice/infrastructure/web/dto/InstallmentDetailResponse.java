@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
-public record CreateInstallmentResponse(
+public record InstallmentDetailResponse(
         String id,
         String accountId,
         String transactionId,
@@ -19,8 +19,8 @@ public record CreateInstallmentResponse(
         BigDecimal installmentProcessingFee,
         List<ScheduleResponse> schedules
 ) {
-    public static CreateInstallmentResponse from(InstallmentPlan plan) {
-        return new CreateInstallmentResponse(
+    public static InstallmentDetailResponse from(InstallmentPlan plan) {
+        return new InstallmentDetailResponse(
                 plan.getId(),
                 plan.getAccountId(),
                 plan.getTxnId(),

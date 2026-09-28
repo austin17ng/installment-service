@@ -1,9 +1,10 @@
 package me.austin.ng.installmentservice.infrastructure.web;
 
 import me.austin.ng.installmentservice.domain.usecase.CreateInstallmentUseCase;
+import me.austin.ng.installmentservice.domain.usecase.GetInstallmentDetailUseCase;
 import me.austin.ng.installmentservice.domain.usecase.GetInstallmentPlansByTransactionUseCase;
 import me.austin.ng.installmentservice.infrastructure.web.dto.CreateInstallmentRequest;
-import me.austin.ng.installmentservice.infrastructure.web.dto.CreateInstallmentResponse;
+import me.austin.ng.installmentservice.infrastructure.web.dto.InstallmentDetailResponse;
 import me.austin.ng.installmentservice.infrastructure.web.dto.InstallmentPlanResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,11 +19,14 @@ public class InstallmentPlanController {
 
     private final GetInstallmentPlansByTransactionUseCase getInstallmentPlansByTransaction;
     private final CreateInstallmentUseCase createInstallment;
+    private final GetInstallmentDetailUseCase getInstallmentDetail;
 
     public InstallmentPlanController(GetInstallmentPlansByTransactionUseCase getInstallmentPlansByTransaction,
-                                      CreateInstallmentUseCase createInstallment) {
+                                      CreateInstallmentUseCase createInstallment,
+                                      GetInstallmentDetailUseCase getInstallmentDetail) {
         this.getInstallmentPlansByTransaction = getInstallmentPlansByTransaction;
         this.createInstallment = createInstallment;
+        this.getInstallmentDetail = getInstallmentDetail;
     }
 
     @GetMapping("/transactions/{transactionId}/installments")
@@ -34,9 +38,14 @@ public class InstallmentPlanController {
     }
 
     @PostMapping("/installments")
-    public CreateInstallmentResponse createInstallment(@RequestBody CreateInstallmentRequest request) {
-        return CreateInstallmentResponse.from(
+    public InstallmentDetailResponse createInstallment(@RequestBody CreateInstallmentRequest request) {
+        return InstallmentDetailResponse.from(
                 createInstallment.execute(request.transactionId(), request.term())
         );
+    }
+
+    @GetMapping("/installments/{id}")
+    public InstallmentDetailResponse getInstallmentDetail(@PathVariable String id) {
+        return InstallmentDetailResponse.from(getInstallmentDetail.execute(id));
     }
 }
