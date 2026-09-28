@@ -57,17 +57,14 @@ Installment Plan
 
 ## 2. Domain Layer
 
-Main domain objects:
-
 ```text
-InstallmentPlan
-InstallmentSchedule
-PaymentAllocation
-InstallmentTerm
-InstallmentOption
-Transaction
-InstallmentCalculator
-TransactionGateway (port)
+domain/
+├── model/          — InstallmentPlan, InstallmentSchedule, PaymentAllocation,
+│                     InstallmentTerm, InstallmentOption, Transaction
+├── common/         — InstallmentCalculator, InstallmentTermPolicy
+├── repository/     — port interfaces (InstallmentPlanRepository, etc.)
+├── gateway/        — port interfaces (TransactionGateway)
+└── usecase/        — GetInstallmentPlansByTransactionUseCase, CreateInstallmentUseCase
 ```
 
 ### InstallmentPlan
