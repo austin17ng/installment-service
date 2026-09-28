@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: installment-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/installment_service
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
