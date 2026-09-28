@@ -51,7 +51,10 @@ InstallmentPlan
 InstallmentSchedule
 PaymentAllocation
 InstallmentTerm
+InstallmentOption
+Transaction
 InstallmentCalculator
+TransactionGateway (port)
 ```
 
 ### InstallmentPlan
@@ -190,7 +193,7 @@ User selects a transaction to view available installment options.
 GET /transactions/{transactionId}/installments
 ```
 
-Returns a list of installment plans with different terms (e.g. 3, 6, 12 months), each showing the monthly amount, interest rate, and fees.
+Fetches the transaction amount from `acc-mg-service`, then calculates installment options for all available terms (3, 6, 9, 12, 18, 24 months). Each option shows the monthly principal, interest rate, processing fee, and total amount.
 
 ---
 
