@@ -1,18 +1,16 @@
-package me.austin.ng.installmentservice.application;
+package me.austin.ng.installmentservice.domain.usecase;
 
 import me.austin.ng.installmentservice.domain.calculator.InstallmentCalculator;
 import me.austin.ng.installmentservice.domain.gateway.TransactionGateway;
 import me.austin.ng.installmentservice.domain.model.InstallmentOption;
 import me.austin.ng.installmentservice.domain.model.InstallmentTerm;
 import me.austin.ng.installmentservice.domain.model.Transaction;
-import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-@Service
 public class GetInstallmentPlansByTransactionUseCase {
 
     private static final Map<InstallmentTerm, BigDecimal> INTEREST_RATES = Map.of(

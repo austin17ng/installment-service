@@ -1,6 +1,6 @@
 package me.austin.ng.installmentservice.infrastructure.web;
 
-import me.austin.ng.installmentservice.application.GetInstallmentPlansByTransactionUseCase;
+import me.austin.ng.installmentservice.domain.usecase.GetInstallmentPlansByTransactionUseCase;
 import me.austin.ng.installmentservice.infrastructure.web.dto.InstallmentPlanResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
