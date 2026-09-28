@@ -7,6 +7,7 @@ import me.austin.ng.installmentservice.domain.repository.InstallmentScheduleRepo
 import me.austin.ng.installmentservice.domain.usecase.CreateInstallmentUseCase;
 import me.austin.ng.installmentservice.domain.usecase.GetInstallmentDetailUseCase;
 import me.austin.ng.installmentservice.domain.usecase.GetInstallmentPlansByTransactionUseCase;
+import me.austin.ng.installmentservice.domain.usecase.GetInstallmentsByAccountUseCase;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -38,5 +39,11 @@ public class DomainBeanConfig {
     public GetInstallmentDetailUseCase getInstallmentDetailUseCase(
             InstallmentPlanRepository planRepository) {
         return new GetInstallmentDetailUseCase(planRepository);
+    }
+
+    @Bean
+    public GetInstallmentsByAccountUseCase getInstallmentsByAccountUseCase(
+            InstallmentPlanRepository planRepository) {
+        return new GetInstallmentsByAccountUseCase(planRepository);
     }
 }

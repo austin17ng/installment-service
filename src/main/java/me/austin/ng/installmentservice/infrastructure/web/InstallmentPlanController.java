@@ -3,6 +3,7 @@ package me.austin.ng.installmentservice.infrastructure.web;
 import me.austin.ng.installmentservice.domain.usecase.CreateInstallmentUseCase;
 import me.austin.ng.installmentservice.domain.usecase.GetInstallmentDetailUseCase;
 import me.austin.ng.installmentservice.domain.usecase.GetInstallmentPlansByTransactionUseCase;
+import me.austin.ng.installmentservice.domain.usecase.GetInstallmentsByAccountUseCase;
 import me.austin.ng.installmentservice.infrastructure.web.dto.CreateInstallmentRequest;
 import me.austin.ng.installmentservice.infrastructure.web.dto.InstallmentDetailResponse;
 import me.austin.ng.installmentservice.infrastructure.web.dto.InstallmentPlanResponse;
@@ -20,13 +21,16 @@ public class InstallmentPlanController {
     private final GetInstallmentPlansByTransactionUseCase getInstallmentPlansByTransaction;
     private final CreateInstallmentUseCase createInstallment;
     private final GetInstallmentDetailUseCase getInstallmentDetail;
+    private final GetInstallmentsByAccountUseCase getInstallmentsByAccount;
 
     public InstallmentPlanController(GetInstallmentPlansByTransactionUseCase getInstallmentPlansByTransaction,
                                       CreateInstallmentUseCase createInstallment,
-                                      GetInstallmentDetailUseCase getInstallmentDetail) {
+                                      GetInstallmentDetailUseCase getInstallmentDetail,
+                                      GetInstallmentsByAccountUseCase getInstallmentsByAccount) {
         this.getInstallmentPlansByTransaction = getInstallmentPlansByTransaction;
         this.createInstallment = createInstallment;
         this.getInstallmentDetail = getInstallmentDetail;
+        this.getInstallmentsByAccount = getInstallmentsByAccount;
     }
 
     @GetMapping("/transactions/{transactionId}/installments")
@@ -47,5 +51,12 @@ public class InstallmentPlanController {
     @GetMapping("/installments/{id}")
     public InstallmentDetailResponse getInstallmentDetail(@PathVariable String id) {
         return InstallmentDetailResponse.from(getInstallmentDetail.execute(id));
+    }
+
+    @GetMapping("/accounts/{accountId}/installments")
+    public List<InstallmentDetailResponse> getInstallmentsByAccount(@PathVariable String accountId) {
+        return getInstallmentsByAccount.execute(accountId).stream()
+                .map(InstallmentDetailResponse::from)
+                .toList();
     }
 }
