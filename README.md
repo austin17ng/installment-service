@@ -246,40 +246,13 @@ acc-mg-service
 
 ### Get Installment Details
 
-Used to display installment information.
+Used to display installment plan information including all schedules.
 
 ```http
 GET /installments/{id}
 ```
 
-Example information:
-
-```text
-Principal amount
-Term
-Status
-Start date
-Outstanding amount
-```
-
----
-
-### Get Installment Schedules
-
-Used to display the monthly repayment schedule.
-
-```http
-GET /installments/{id}/schedules
-```
-
-Example:
-
-```text
-#1  Oct 01   2,100,000   PAID
-#2  Nov 01   2,100,000   PAID
-#3  Dec 01   2,100,000   PENDING
-#4  Jan 01   2,100,000   PENDING
-```
+Returns: plan details (term, status, start date, amounts, rates, fees) and the list of schedules (due date, status, principal, interest).
 
 ---
 
