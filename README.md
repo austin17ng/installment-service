@@ -15,7 +15,20 @@ Prerequisites: Java 17, PostgreSQL
 ./gradlew bootRun --args='--spring.profiles.active=dev'
 ```
 
-### Run in production
+### Run with Docker
+
+```bash
+docker build -t installment-service .
+
+docker run -p 8080:8080 \
+  -e SPRING_PROFILES_ACTIVE=prod \
+  -e DB_URL=jdbc:postgresql://host.docker.internal:5432/installment_db \
+  -e DB_USERNAME=austin17ng \
+  -e DB_PASSWORD=austin123 \
+  installment-service
+```
+
+### Run in production (without Docker)
 
 ```bash
 ./gradlew bootRun --args='--spring.profiles.active=prod'
